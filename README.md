@@ -27,16 +27,16 @@ Build:
     ./create.sh
 
 - Upload the generated ``bundle.zip`` to [CodaLab](https://codalab.lisn.upsaclay.fr/competitions/s3_create_competition).
-- Check or delete the ``tmp`` folder for the content.
+- Check or delete the ``tmp`` folder for your confirmation.
 
 ## How it works?
 
 ### Scoring Program:
 - CodaLab workers accept a submission and unzip it into a temporary directory ``$input`` as ``res`` folder (along with ``ref`` as the reference to execute ``score.py``, as defined in ``metadata``).
-- ``score.py`` will write the scores to ``$output/scores.txt``, which are projected on to the leaderboard defined in ``competition.yaml``.
+- ``score.py`` (requiring the above docker image) writes the scores to ``$output/scores.txt``, which are projected on to the leaderboard defined in ``competition.yaml``.
 
 If you want to modify the scores, check both ``score.py`` and ``competition.yaml``.
 
 ### Interface:
 - You need to configure the ``competition.yaml`` (e.g., ``start_date`` and ``end_date``) and modify the corresponding html files in ``Bundle/html``.
-- Note that images (i.e., svg files) have been uploaded to a separate server, accessible by ``<a href>``.
+- Note that images (i.e., svg files) have been uploaded to a separate server, accessible by ``<a href="https://cl.sd.tmu.ac.jp/~zchen/...">``.
