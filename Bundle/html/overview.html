@@ -1,0 +1,82 @@
+<H3>Welcome to DoTS/Wiki</H3>
+
+<p>
+    <b>DoTS/Wiki</b> contains all currently available document-level simplication resources on Wikipedia in three languages:
+    English <a href="https://aclanthology.org/2023.acl-long.596.pdf">SWiPE</a>, German <a href="https://aclanthology.org/2022.lrec-1.288.pdf">Klexikon</a> , and the Wikipedia part of Japanese <a href="https://aclanthology.org/2024.lrec-main.41.pdf">JADOS</a>.
+</p>
+
+<p>
+    The original data is available on GitHub but we encourage you to follow our competition schedule.
+    Especially, <b>do not use the test sets for model development</b>.
+    We keep the original data splits and rearranged complex-simple pairs of plain text files for an unified style.
+</p>
+
+<p>
+    Although we adopt SWiPE instead of <a href="https://aclanthology.org/2021.emnlp-main.630.pdf">D-Wikipedia</a> because of alignment and text style,
+    we adopt their metric, D-SARI, as our evaluation metric.
+    However, JADOS reported that D-SARI still suffers from low correspondence with human evaluation.
+    We will provide a manual evaluation for best results we gathered from the competition as a meta-evaluation dataset.
+</p>
+
+<h3>Obtaining Data</h3>
+<p>
+    Please follow the <b><a href="#participate-get_starting_kit">Participate >> Files</a></b> tabs to find the data for both Developing and Testing phases (data.zip).
+    The Python script <b>create.submission.py</b> is included for your submissions of both phases.
+</p>
+<p>
+    Follow the <b><a href="#participate-get_data">Participate >> Get Data</a></b> tabs to learn about the package format.
+</p>
+
+<h3>Tracks</h3>
+<p>
+    We encourage participants to use a　consistent method for all three corpora, although each has special characteristics (i.e., SWiPE and Klexikon are created by using comparable resources to the original Wikipedia documents, whereas JADOS annotators simplified Wikipedia articles into a few sentences of around 150 Japanese characters).
+    But feel free to focus on the any corpora of your interest.
+    We offer two tracks and each has two phases: developing and testing (Find the Phase Tab for more details).
+</p>
+<ul>
+    <li><b>Primary Track: Document Simplication</b></li>
+    <li><b>Supportive Track: Document Compression (Sentence-level Deletion)</b></li>
+</ul>
+
+<p>
+    <b>Motivation</b>:
+    The complex documents may contain too many detailed information.
+    Selecting sentences for omission reduces the input load for simplification affects the surface scores based on SARI and D-SARI.
+    The supportive track (document compression or sentence-level deletion) helps your model to focus on the most important information suggested by each corpora (e.g., pairs in SWiPE and Klexikon are independently created, even though they are automatically filtered).
+    Anyway, you are also encouraged to develop your model without using the supportive track.
+    If you succeed without using the supportive track, we would like to study your work.
+</p>
+
+<h3>Dataset Statistics</h3>
+<p>
+    <b>Primary track</b>:
+    The data splits are the standard train/validation/test scheme.
+    The length distributions across the three corpora are similar.
+    Klexikon adopted a stratified sampling process on length, so its splits align the best for the complex documents.
+    We use the first sections of Klexikon's simplified documents and skip other sections,
+    which generally contain kinder-oriented Q&As for the details of the content, appealing to be supplementray.
+	<center><img src="https://cl.sd.tmu.ac.jp/~zchen/codalab_shared/en.Density.svg"></center>
+	<center><img src="https://cl.sd.tmu.ac.jp/~zchen/codalab_shared/de.Density.svg"></center>
+	<center><img src="https://cl.sd.tmu.ac.jp/~zchen/codalab_shared/ja.Density.svg"></center>
+    JADOS's stratified sampling was on content category.
+	<center><img src="https://cl.sd.tmu.ac.jp/~zchen/codalab_shared/ja.category.svg"></center>
+    
+</p>
+<p>
+    <b>Supportive track</b>: JADOS contains human-annotated alignment for the deletion task,
+    whereas SWIPE contains an automatic alignment on elementary edits with human-annotated grouping for categorization which offers multi-level of alignment.
+	<center><img src="https://cl.sd.tmu.ac.jp/~zchen/codalab_shared/en.Deletion.svg"></center>
+	<center><img src="https://cl.sd.tmu.ac.jp/~zchen/codalab_shared/ja.Deletion.svg"></center>
+    Deletion is the most common edit at sentence level on JADOS.
+	<center><img src="https://cl.sd.tmu.ac.jp/~zchen/codalab_shared/ja.edit.svg"></center>
+    In this competition, we merge in-domain and out-of-domain test sets of SWiPE.
+    Since JADOS is annotated by two human annotators, there are repetition in the del_ids.txt files of ja splits.
+</p>
+
+<H3>Co-organizers</H3>
+<ul>
+    <li>Mamoru Komachi</li>
+    <li>Zhousi Chen (the developer of this platform software)</li>
+    <li>Ruiliang Sun</li>
+    <li>Xiaojun Wan</li>
+</ul>

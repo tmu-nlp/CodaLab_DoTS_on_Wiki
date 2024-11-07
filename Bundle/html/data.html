@@ -1,0 +1,40 @@
+<h3>
+	About the Dataset
+</h3>
+
+<p>
+	The startup kit (<b>data.zip</b>) includes full <em>training</em> and <em>validation</em> datasets of three corpora.
+	The <em>test</em> sets contains only the complex documents (<q>source</q> folders) without the simplification (i.e., without any <q>target</q> folders) to avoid misuse for development.
+	Besides, it contains a <em>dummy.submission.zip</em> as an examplary developing sumission and <em>create.submission.py</em> to package your ourput for submission.
+</p>
+
+<h3>Primary Track: Document-level Text Simplication</h3>
+<p>
+	Each folder of the splits of three corpora contains <q>source</q> and <q>target</q> folders.
+	Because JADOS has two annotators, each folder contains <q>target_0</q> and <q>target_1</q> folders.
+	Files in all folders are named by a ID number Pythonically starting from zero (e.g., <q>source/0.txt</q>, <q>target/0.txt</q>, etc.) which aligns the complex-simple pairs.
+</p>
+<p>
+	All documents in are presented in plain text files (ID.txt) with each line being a sentence.
+	You don't have to provide in such a style with each line being a sentence, we will perform sentence splitting at evaluation.
+	But you should provide all corresponding predictions in the ID.txt format in a folder for each corpus.
+</p>
+
+<h3>Supportive Track: Document Compression or Sentence-level Deletion</h3>
+<p>
+	Apart from the <em>source</em> and <em>target</em> folders, SWiPE and JADOS further contain <q>list.txt</q> and <q>del_ids.txt</q> files.
+	Each line of <q>list.txt</q> indicates the ID number of the complex document and the corresponding line of <q>del_ids.txt</q> contains the Pythonically (starting from zero) enumerated lines of deletion.
+	This style facilitates both tracks: <em>source/*.txt</em> is used for both tracks.
+</p>
+
+<h3>Pack Submission</h3>
+<p>
+	$ python create.submission.py SUBMISSION_FILE_NAME \<br>
+	-e PATH_TO_EN_PREDICT_FOLDER \<br>
+	-d PATH_TO_DE_PREDICT_FOLDER \<br>
+	-j PATH_TO_JA_PREDICT_FOLDER \<br>
+	--deletion FILE_NAME_OF_PREDICTED_DEL_IDS (del_ids.txt by default)
+</p>
+<p>
+	FILE_NAME_OF_PREDICTED_DEL_IDS should be placed aside to the PATH_TO_XX_PREDICT_FOLDER.
+</p>

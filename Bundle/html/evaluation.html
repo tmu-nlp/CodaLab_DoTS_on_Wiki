@@ -1,0 +1,54 @@
+<style>
+    .alnright { text-align: right; }
+	table, th, td {
+		border: 1px solid;
+		border-collapse: collapse;
+	}
+</style>
+
+<H3>Evaluation Criteria</H3>
+
+<p>
+	We use <a href="https://aclanthology.org/2021.emnlp-main.630.pdf">D-SARI</a> (based on SARI) as our evaluation criteria for the primary track and F1 score for the supportive track (if the latter exist).
+	We adopt <a href="https://www.nltk.org">NLTK</a> for both English and German sententce splitting and word tokenization, <a href="https://github.com/megagonlabs/bunkai?tab=readme-ov-file">Bunkai</a> and <a href="https://taku910.github.io/mecab/">MeCab</a> for Japanese.
+	(SpaCy for German is too slow so that we abandoned.)
+</p>
+<p>
+	Additionally, we gradually the mean squared error (MSE) away from 150 characters on JADOS.
+</p>
+
+<table style="width:100%">
+	<tr>
+		<th></th>
+		<th class='alnright'>SWiPE</th>
+		<th class='alnright'>Klexikon</th>
+		<th class='alnright'>JADOS</th>
+	</tr>
+	<tr>
+		<td>Primary Track</td>
+		<td class='alnright'>D-SARI</td>
+		<td class='alnright'>D-SARI</td>
+		<td class='alnright'>D-SARI + MSE</td>
+	</tr>
+	<tr>
+		<td>Supportive Track</td>
+		<td class='alnright'>F1</td>
+		<td class='alnright'>None</td>
+		<td class='alnright'>F1</td>
+	</tr>
+</table>
+
+<p>
+	(Click the <b>Results</b> tab to see the tables organized in the datasets as units instread of tracks.)
+</p>
+<H3>Submission Format</H3>
+
+<p>
+	We suggest to use <b>create.submission.py</b> to pack up your prediction into a submission file for all corpora.
+	Python it for its usage or check <b><a href="#participate-get_data">Participate >> Get Data</a></b>.
+</p>
+
+<p>
+	For each corpus, the submission format is a folder containing all generated summary files with an optional deletion prediction file.
+	You can choose to submit any tracks for any corpora.
+</p>

@@ -1,0 +1,9 @@
+[submodule "Corpora/SWiPE"]
+	path = Corpora/SWiPE
+	url = https://github.com/salesforce/simplification.git
+[submodule "Corpora/Klexikon"]
+	path = Corpora/Klexikon
+	url = https://github.com/dennlinger/klexikon.git
+[submodule "Corpora/JADOS-Wiki"]
+	path = Corpora/JADOS-Wiki
+	url = https://github.com/tmu-nlp/JADOS.git

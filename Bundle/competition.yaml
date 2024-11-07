@@ -1,0 +1,208 @@
+title: "DoTS/Wiki 2025 Competition: Document-level Text Simplification on Wikipedia"
+description: Providing better readability for Wikipedia articles.
+image: html/logo.jpeg
+# enviroment
+competition_docker_image: zchen0420/sari:0
+# Does this competition require participant approval by the organizer
+has_registration: True
+# When is this competition finished. It is valid to not include an end_date, which means the competition remains open perpetually.
+# end_date: 2025-12-31 # now never ends
+admin_names: zchen,komachi,hikaritcs
+html: 
+    # Basic overview (first impression) of the challenge
+    overview: html/overview.html
+    # What are the metrics being used for this challenge, how is it being scored.
+    evaluation: html/evaluation.html
+    # Terms of participation, including data licensing, results submission, et al
+    terms: html/terms_and_conditions.html
+    # Where to find the data, how to download it.
+    data: html/data.html
+    # An extra page
+    # page_name: extra.html
+
+phases:
+    1:
+        # Phase number for ordering
+        phasenumber: 1
+        # Label or name of this phase
+        label: "Developing"
+        description: "Please use the `split' folder to develop your model or method; Python create.submission.py to create submission zip file."
+        # | multi-line desc
+        # When this phase starts - this is the first date participants can download the data and submit results
+        start_date: 2024-10-10
+        # Maximum number of submissions per participant
+        max_submissions: 100
+        # A bundle containing the program used to evaluate results.
+        scoring_program: scoring_program.zip
+        # A bundle containing reference data to compare submitted data with for scoring.
+        reference_data: ref.valid.zip
+        # You can select from these colors:
+        # white, orange, yellow, green, blue, purple
+        color: green
+        # Maximum execution time of the submission (in seconds), default = 300
+        execution_time_limit: 300
+        # Maximum number of submissions a user can make in a day. default = unlimited
+        max_submissions_per_day: 15
+        # necessary things to start up experiments
+        starting_kit: data.zip
+        # The datasets used for this phase, all references are URLs to externally stored data
+        # datasets: 
+        #     # The first data set
+        #     1:
+        #         # Uniquely :) named
+        #         name: Data 1
+        #         # A url to the data
+        #         url: http://spreadsheets.google.com/pub?key=pyj6tScZqmEfbZyl0qjbiRQ&output=xls
+        #         # A brief description to indicate the contents of the data for users
+        #         description: Example Dataset
+        #     # A second data set, there can be any number
+        #     2:
+        #         # Again uniquely named so users can tell what it is
+        #         name: Data 2
+        #         # URL to the actual data
+        #         url: http://spreadsheets.google.com/pub?key=0AgogXXPMARyldGJqTDRfNHBWODJMRWlZaVhNclhNZXc&output=xls 
+        #         # Brief description
+        #         description: Example Dataset
+                
+    2:
+        phasenumber: 2
+        label: "Testing"
+        description: "Please use the `test' folder to make prediction; Python create.submission.py to create submission zip file."
+        color: purple
+        start_date: 2024-10-25
+        max_submissions: 5
+        scoring_program: scoring_program.zip
+        reference_data: ref.test.zip
+        # datasets: 
+        #     1:
+        #         name: Challenge Data
+        #         url: http://spreadsheets.google.com/pub?key=t9GL1nIZdtxszJbjKErN2Hg&output=xls
+        #         description: Example challenge data
+                
+leaderboard:
+    # Collections of scores, ways to slice multi-dimensional scores into "groups"
+    # This leaderboard has one result, the difference (difference of the submitted number from Pi)
+    leaderboards:
+        # The internal key name for the overall results group
+        RESULTS: &RESULTS
+            # Label for this group
+            label: Summary
+            # Ordering of the groups, starts at 1
+            rank: 1
+        SWiPE: &EN
+            label: SWiPE - English [Track 1+2]
+            rank: 2
+        Klexikon: &DE
+            label: Klexikon - German [Track 1]
+            rank: 3
+        JADOS: &JA
+            label: JADOS Wikipedia - Japanese [Track 1+2]
+            rank: 4
+    # Actual scores in the leaderboard
+    columns:
+        en_macro_d_sari:
+            leaderboard: *EN
+            label: D-SARI
+            numeric_format: 2
+            rank: 1
+        en_macro_sari:
+            leaderboard: *EN
+            label: Marco SARI
+            numeric_format: 2
+            rank: 2
+        en_micro_sari:
+            leaderboard: *EN
+            label: Mirco SARI
+            numeric_format: 2
+            rank: 3
+        en_duration:
+            leaderboard: *EN
+            label: Duration
+            numeric_format: 2
+            sorting: asc
+            rank: 4
+        en_f1:
+            leaderboard: *EN
+            label: Deletion F1
+            numeric_format: 2
+            rank: 5
+
+        de_macro_d_sari:
+            leaderboard: *DE
+            label: D-SARI
+            numeric_format: 2
+            rank: 1
+        de_macro_sari:
+            leaderboard: *DE
+            label: Marco SARI
+            numeric_format: 2
+            rank: 2
+        de_micro_sari:
+            leaderboard: *DE
+            label: Mirco SARI
+            numeric_format: 2
+            rank: 3
+        de_duration:
+            leaderboard: *DE
+            label: Duration
+            numeric_format: 2
+            sorting: asc
+            rank: 4
+
+        ja_macro_d_sari:
+            leaderboard: *JA
+            label: D-SARI
+            numeric_format: 2
+            rank: 1
+        ja_macro_sari:
+            leaderboard: *JA
+            label: Marco SARI
+            numeric_format: 2
+            rank: 2
+        ja_micro_sari:
+            leaderboard: *JA
+            label: Mirco SARI
+            numeric_format: 2
+            rank: 3
+        ja_mse:
+            leaderboard: *JA
+            label: Length MSE
+            numeric_format: 2
+            sorting: asc
+            rank: 4
+        ja_duration:
+            leaderboard: *JA
+            label: Duration
+            numeric_format: 2
+            sorting: asc
+            rank: 5
+        ja_f1:
+            leaderboard: *JA
+            label: Deletion F1
+            numeric_format: 2
+            rank: 6
+
+        ave_macro_d_sari:
+            leaderboard: *RESULTS
+            label: D-SARI
+            numeric_format: 2
+            rank: 1
+        ave_macro_sari:
+            leaderboard: *RESULTS
+            label: Marco SARI
+            numeric_format: 2
+            rank: 2
+        ave_micro_sari:
+            leaderboard: *RESULTS
+            label: Mirco SARI
+            numeric_format: 2
+            rank: 3
+        submitted_lang:
+            leaderboard: *RESULTS
+            label: "#lang (of 3) .#del (of 2)"
+            numeric_format: 1
+            rank: 4
+
+
+# upload from a mac
+# https://github.com/codalab/codalab-competitions/issues/2545

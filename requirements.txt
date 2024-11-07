@@ -1,0 +1,6 @@
+mecab-python3
+unidic-lite
+emoji~=1.6.3
+bunkai
+numpy
+scikit-learn
