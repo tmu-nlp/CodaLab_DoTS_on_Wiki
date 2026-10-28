@@ -3,4 +3,5 @@ unidic-lite
 emoji~=1.6.3
 bunkai
 numpy
+nltk
 scikit-learn

@@ -112,18 +112,18 @@ def write_others(stream, lang, **scores):
 
 
 if __name__ == '__main__':
-    try:
-        from sys import argv
+    from sys import argv
+    if len(argv) == 3: # run by CodaLab: score.py $input $output
         _, input_dir, output_dir = argv
         result_dir    = os.path.join(input_dir, 'res')
-        reference_dir = os.path.join(input_dir, 'ref')
+        ref_root      = os.path.join(input_dir, 'ref')
 
-        if os.path.isdir(reference_dir := os.path.join(reference_dir, 'valid')):
+        if os.path.isdir(reference_dir := os.path.join(ref_root, 'valid')):
             split = 'en', 'de', 'ja' #{'en': 'val', 'de': 'validation', 'ja': 'valid'}
-        elif os.path.isdir(reference_dir := os.path.join(reference_dir, 'test')):
+        elif os.path.isdir(reference_dir := os.path.join(ref_root, 'test')):
             split = 'en', 'de', 'ja' #{'en': ('test_id', 'test_ood'), 'de': 'test', 'ja': 'test'}
         else:
-            raise ValueError(f'System Error: no reference found! {os.listdir(reference_dir)}')
+            raise ValueError(f'System Error: no reference found! {os.listdir(ref_root)}')
         
         result_langs = [lang for lang in os.listdir(result_dir) if lang in split]
         summaries = []
@@ -150,7 +150,7 @@ if __name__ == '__main__':
             print(f"submitted_lang:", len(result_langs) + 0.1 * del_success, file = fw)
 
         # 说明：上传失败不算做每日计数；不要hack（控制test数据的可见期间）；
-    except:
+    else: # local check with the dummy submission under ../py/split
         micro, macro = sum((
             evaluate_sari(None, 'en',
                 '../py/split/en/val/dummy', 

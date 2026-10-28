@@ -27,4 +27,4 @@ RUN pip install numpy
 RUN pip install emoji~=1.6.3
 RUN pip install bunkai
 RUN pip install nltk
-RUN python -m nltk.downloader -d /usr/local/share/nltk_data punkt
+RUN python -m nltk.downloader -d /usr/local/share/nltk_data punkt punkt_tab # nltk>=3.8.2 tokenizes with punkt_tab
