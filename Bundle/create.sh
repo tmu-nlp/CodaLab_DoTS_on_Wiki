@@ -4,7 +4,7 @@ split_path="../tmp/split"
 if [ -d "$split_path" ]; then
     rm -rf "$split_path"
 fi
-mkdir "$split_path"
+mkdir -p "$split_path"
 
 # CodaLab uses python 2.7 workers, so we need to avoid using unicode characters in the filenames.
 python stat_en.py "$split_path"

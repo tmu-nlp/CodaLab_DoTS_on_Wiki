@@ -146,6 +146,8 @@ def score(ssent, csent, rsents, tokenizer = str.split, aggregator = None):
     
     if token_output_length >= token_reference_length:
         LP_1 = 1
+    elif token_output_length == 0: # limit of the exp below for an empty output
+        LP_1 = 0
     else:
         LP_1 = np.exp((token_output_length - token_reference_length) / token_output_length)
 

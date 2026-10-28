@@ -17,7 +17,7 @@ match trim:
     case 'first_section':
         trim = True
     case _:
-        ValueError(f"Invalid argument: {trim} not in (all, first_section)")
+        raise ValueError(f"Invalid argument: {trim} not in (all, first_section)")
 
 splits = 'validation', 'test', 'train'
 

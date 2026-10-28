@@ -18,7 +18,7 @@ Requirements:
 
 Setup Docker for CodaLab workers:
 
-    docker buildx build -t zchen0420/sari:0 . --push
+    docker buildx build -t zchen0420/sari:0 Bundle --push
     # refer to the same image name in competition.yaml
 
 Build:
